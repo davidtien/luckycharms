@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  web:
+    build: ./client
+    environment: 
+      REACT_APP_API_HOST: http://localhost/
+      REACT_APP_SOCKET_PATH: /ws/socket.io
+    expose:
+      - 3000
+    stdin_open: true
+
+  redis:
+    image: redis:latest
+    expose:
+      - 6379
+    volumes:
+      - redis_data:/data
+
+  server:
+    build: ./server
+    expose:
+      - 3001
+    depends_on: 
+      - redis
+
+  nginx:
+    image: nginx:mainline-alpine
+    ports:
+      - '80:80' 
+    depends_on: 
+      - web
+      - server
+      
+volumes:  
+  redis_data:
+

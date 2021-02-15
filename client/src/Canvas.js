@@ -135,7 +135,7 @@ export function Canvas() {
             {users && users.map(block => Cursor(block))}
             <Stage
                 ref={stageRef}
-                width={window.innerWidth - 400}
+                width={window.innerWidth}
                 height={window.innerHeight}
                 onClick={clearSelection}
                 onMouseMove={handleOnMouseMove}

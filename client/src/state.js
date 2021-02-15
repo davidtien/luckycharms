@@ -28,8 +28,8 @@ export const resetDoc = () => {
     useShapes.set(baseShapesState);
 
     commit_data("shapes", baseShapesState.shapes);
-    commit_data("locked", baseShapesState.locked);
     commit_data("selected", baseShapesState.selected);
+    commit_data("locked", baseShapesState.locked);
 };
 
 
@@ -120,24 +120,36 @@ export const clearSelection = () => {
     });
 };
 export const lockShape = (shape_id) => {
-    setShapeState((state) => {
+    setShapeState((state) => 
         {
             if ( !state.locked ){
                 state.locked = new Array()
             }
-            state.locked.push({ id: shape_id, owner: socket_manager.get_self_id() })
-            console.log("LOCK SHAPE: " + shape_id);
+            var self_id = socket_manager.get_self_id();
+            var locked_items = state.locked.length;
 
+            // remove any previously locked items
+            while (locked_items--){
+                if ( state.locked[locked_items].id == shape_id || 
+                     state.locked[locked_items].owner == self_id ){
+                         state.locked.splice(locked_items, 1);
+                     }
+            }
+            state.locked.push({ id: shape_id, owner: socket_manager.get_self_id() })
+
+            //console.log("LOCK SHAPE: " + shape_id);
+            //console.log(state.locked);
             commit_data("locked", state.locked);
         }
-    })
+    )
 };
 export const unlockShape = (shape_id) => {
     setShapeState((state) =>
         {  state.locked.splice(
             state.locked.findIndex(item => ( item.id == shape_id && item.owner == socket_manager.get_self_id()), 1))
         
-            console.log("UNLOCK SHAPE: " + shape_id);
+            //console.log("UNLOCK SHAPE: " + shape_id);
+            //console.log(state.locked);
             commit_data("locked", state.locked);
         }
         

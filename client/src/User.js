@@ -25,9 +25,11 @@ function createStyle(id) {
     return cursorStyle;
 }
 export function User(props) {
+    var style_string = createStyle(props.id)
     return (
-        <div className="user" id={"user-" + props.id} style={createStyle(props.id)}>
-            {props.id}
+        <div className="user tooltip" id={"user-" + props.id} style={style_string}>
+            <span class="tooltiptext">{props.id}</span>
+            <div classs="icon" style={style_string}></div>
         </div>
     )
 }

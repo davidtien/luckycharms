@@ -18,28 +18,26 @@ body,
 .app {
   display: flex;
   overflow: hidden;
+  flex-direction: column
 }
 
 aside {
   width: 250px;
 }
 
-.palette {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-}
 
 .shape {
   margin: 10px;
-  height: 100px;
-  width: 150px;
+  height: 40px;
+  width: 60px;
   border: solid 2px black;
+}
+.shape:hover{
+    border: 2px solid #55e5f8;
 }
 
 .circle {
-  width: 100px;
+  width: 40px;
   border-radius: 50%;
 }
 
@@ -49,21 +47,46 @@ aside {
   padding: 10px;
 }
 
-.properties {
+.properties.panel {
   margin-top: 10px;
+  display: none;
+  position: absolute; 
+  top: 40px; 
+  flex-direction: row;
+  z-index:5;
+  width: 100%;
+  justify-content: center;
+}
+.visible{
+  display: flex !important; 
+}
+.hide {
+  display: none !important; 
 }
 
-.people {
-    margin-top: 10px;
-  }
+.presence.panel{
+    justify-content: flex-end; 
+    flex-direction: row; 
+}
+
+.palette.panel {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    z-index: 2;
+    background-color: #fbfbfb;
+}
 
 .key {
   color: lightslategray;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 10px;
   align-items: center;
   height: 25px;
+  margin-left:12px; 
+  margin-right:12px;
 }
 
 .value {
@@ -76,7 +99,7 @@ aside {
 }
 
 .canvas {
-  width: calc(100% - 200px);
+  width: 100%;
   border: solid 1px lightgray;
   border-top: none;
   border-bottom: none;
@@ -119,3 +142,41 @@ aside {
     transform-origin: 150%, 150%;
     z-index: 999; 
 }
+.user {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+.user .icon {
+    display: inline-block;
+    position: absolute;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 240px;
+    background-color: #0000008f;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    font-size:14px; 
+    
+    top: -5px;
+    right: 105%;
+   
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

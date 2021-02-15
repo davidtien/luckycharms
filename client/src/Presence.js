@@ -27,7 +27,7 @@ export function Presence() {
     // to ensure these are only bound once
     useEffect(() => {
         socket_manager.get_raw_socket().on("initConnectedUsers", userData => {
-            console.log(userData);
+            //(userData);
             initUsers(userData);
         });
         socket_manager.get_raw_socket().on("userJoined", userData => {
@@ -74,18 +74,13 @@ export function Presence() {
         if (user_exists) {
             // remove it
             removeUser(user_id);
-            console.log("REMOVE USER: " + user_id)
+            //console.log("REMOVE USER: " + user_id)
         }
     }
 
     return (
-        <aside className="panel">
-            <h2>People</h2>
-            <div className="people">
-
-                {users.map(block => User(block))}
-
-            </div>
-        </aside>
+        <div className="panel presence">
+            {users.map(block => User(block))}
+        </div>
     );
 }

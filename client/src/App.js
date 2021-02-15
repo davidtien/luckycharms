@@ -16,10 +16,10 @@ function App() {
   return (
     <div className="app">
       <SocketContext.Provider value={socket_manager}>
-        <Palette />
-        <Canvas />
-        <PropertiesPanel />
         <Presence />
+        <PropertiesPanel />
+        <Canvas />
+        <Palette />
       </SocketContext.Provider>
     </div>
   );

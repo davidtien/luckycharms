@@ -28,8 +28,7 @@ const handleDragStart = (event) => {
 
 export function Palette() {
     return (
-        <aside className="palette">
-            <h2>Shapes</h2>
+        <div className="palette panel">
             <div
                 className="shape rectangle"
                 data-shape={SHAPE_TYPES.RECT}
@@ -42,6 +41,6 @@ export function Palette() {
                 draggable
                 onDragStart={handleDragStart}
             />
-        </aside>
+        </div>
     );
 }

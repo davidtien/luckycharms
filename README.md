@@ -1,6 +1,8 @@
 
 ## Multiplayer Whiteboard Prototype:
-[Architecture](https://app.cloverapp.co/shared/e76712bf-d499-4048-9b9b-700e7c91742b)
+
+## Architecture
+<img width="1101" alt="arch-diagram" src="https://user-images.githubusercontent.com/3998480/115320566-01c6a180-a137-11eb-93cb-3032cf936603.png">
 
 
 ## For Local Dev
